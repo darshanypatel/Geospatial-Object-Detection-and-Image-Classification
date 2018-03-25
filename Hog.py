@@ -20,7 +20,7 @@ def HOG(image_name):
 import cv2 as cv
 import os
 
-location = './UCMerced_LandUse/training_images/negative_examples'
+location = './UCMerced_LandUse/training_images/runway'
 
 for filename in os.listdir(location):
     if filename.endswith(".tif"):
