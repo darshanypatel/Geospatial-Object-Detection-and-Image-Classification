@@ -138,7 +138,7 @@ def get_negative_samples(object_name):
 def save_fds():
     images_location = '/Users/darshanypatel/Desktop/Sem_3/Spatial and Temporal Data Mining/Project/Geospatial-Object-Detection-and-Image-Classification/UCMerced_LandUse/Images'
     for directoryname in os.listdir(images_location):
-        if not directoryname.startswith(".") and not directoryname.startswith("agric"):
+        if not directoryname.startswith("."):
             fds = get_negative_samples(directoryname)
             f = file(fds_location + directoryname, 'w')
             pickle.dump(fds, f)
