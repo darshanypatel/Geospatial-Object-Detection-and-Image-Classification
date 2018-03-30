@@ -17,7 +17,7 @@ fds_location = '/Users/darshanypatel/Desktop/Sem_3/Spatial and Temporal Data Min
 
 def HOG(filename):
     image = cv.imread(location + '/' + filename, 0)
-    fd, hog_image = hog(image, orientations=9, pixels_per_cell=(6, 6),
+    fd, hog_image = hog(image, orientations=9, pixels_per_cell=(8, 8),
                         cells_per_block=(2, 2), visualise=True)
 
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(8, 4), sharex=True, sharey=True)
@@ -48,7 +48,7 @@ def save_HOG_of_all_images(directory):
     for filename in os.listdir(directory):
         if filename.endswith(".tif"):
             image = cv.imread(directory + '/' + filename, 0)
-            fd, hog_image = hog(image, orientations=9, pixels_per_cell=(6, 6), cells_per_block=(2, 2), visualise=True)
+            fd, hog_image = hog(image, orientations=9, pixels_per_cell=(8, 8), cells_per_block=(2, 2), visualise=True)
             hog_image_rescaled = exposure.rescale_intensity(hog_image, in_range=(0, 255))
 
             index = directory.index("Images") + 6
@@ -114,7 +114,7 @@ def get_positive_samples():
             image = cv.imread(testing_location + filename, 0)
             if image.shape != (256, 256):
                 image = cv.resize(image, (256, 256))
-            fd, hog_image = hog(image, orientations=9, pixels_per_cell=(6, 6), cells_per_block=(2, 2), visualise=True, block_norm='L2-Hys')
+            fd, hog_image = hog(image, orientations=9, pixels_per_cell=(8, 8), cells_per_block=(2, 2), visualise=True, block_norm='L2-Hys')
             list_of_fds += [fd]
 
         # JUST ONE AIRPLANE IMAGE TO TRAIN
@@ -128,7 +128,7 @@ def get_negative_samples(object_name):
         image = cv.imread(images_location + '/' + object_name + '/' + filename, 0)
         if image.shape != (256, 256):
             image = cv.resize(image, (256, 256))
-        fd, hog_image = hog(image, orientations=9, pixels_per_cell=(6, 6), cells_per_block=(2, 2), visualise=True,
+        fd, hog_image = hog(image, orientations=9, pixels_per_cell=(8, 8), cells_per_block=(2, 2), visualise=True,
                             block_norm='L2-Hys')
         list_of_fds += [fd]
     print "Directory " + object_name + " done."
@@ -162,7 +162,7 @@ def get_scores_of_airplanes(classifier):
             image = cv.imread(testing_location + filename, 0)
             if image.shape != (256, 256):
                 image = cv.resize(image, (256, 256))
-            fd, hog_image = hog(image, orientations=9, pixels_per_cell=(6, 6), cells_per_block=(2, 2), visualise=True,
+            fd, hog_image = hog(image, orientations=9, pixels_per_cell=(8, 8), cells_per_block=(2, 2), visualise=True,
                                 block_norm='L2-Hys')
             predicted = classifier.predict([fd])
             probability = classifier.predict_proba([fd])
@@ -192,7 +192,7 @@ def get_updated_positive_fds(sorted_scores):
         print "selected: " + airplanes[sorted_scores[i][0]]
         if image.shape != (256, 256):
             image = cv.resize(image, (256, 256))
-        fd, hog_image = hog(image, orientations=9, pixels_per_cell=(6, 6), cells_per_block=(2, 2), visualise=True,
+        fd, hog_image = hog(image, orientations=9, pixels_per_cell=(8, 8), cells_per_block=(2, 2), visualise=True,
                             block_norm='L2-Hys')
         list_of_fds += [fd]
     return list_of_fds
