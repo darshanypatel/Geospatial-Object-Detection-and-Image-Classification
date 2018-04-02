@@ -28,9 +28,9 @@ Procedute to follow for implementation:
 
 Libraries Used:
 
-openCV
-skimage. -- HOG
-numpy
-pickle
-sklearn.svm
+1. openCV
+2. skimage. -- HOG
+3. numpy
+4. pickle
+5. sklearn.svm
 
