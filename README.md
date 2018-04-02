@@ -10,10 +10,9 @@ Procedute to follow for implementation:
 
 2. Create HOG of every image using [Dalal and Triggs](http://ieeexplore.ieee.org/xpls/icp.jsp?arnumber=1467360) references
 
-
 3. Following [this](https://www.learnopencv.com/histogram-of-oriented-gradients/) technique for creating HOGs
 
-4. Build a linear SVM using the seed images as positive examples in HOG feature Space and other images as the negative examples.
+4. Build a linear SVM using the seed image as positive example in HOG feature Space and other images as the negative examples.
 
 5. Get top 5 predictions using the above SVM and build a new model using these 5 images as positive examples for training.
 
