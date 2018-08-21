@@ -60,3 +60,5 @@ This code uses one seed image of an airplane and follows the procedure given abo
 #### Object_detection.py:
 
 This code uses the classifier stored from the above code and predicts the object locations using a sliding window. Then it removes the repeated detections of a single object using Non-Maximum Suppression.
+
+# This project is not yet finished!
